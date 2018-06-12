@@ -28,6 +28,27 @@ var MarsRover = require('./MarsRover');
             expect(marsRover.givePosition()).toEqual("1 3 N");
         });
 
+        it('should be able to move towards south', function () {
+            var marsRover = new MarsRover(1,2,'S');
+            marsRover.instruction("M");
+
+            expect(marsRover.givePosition()).toEqual("1 1 S");
+        });
+
+        it('should be able to move towards East', function () {
+            var marsRover = new MarsRover(2,2,'E');
+            marsRover.instruction("M");
+
+            expect(marsRover.givePosition()).toEqual("3 2 E");
+        });
+
+        it('should be able to move towards West', function () {
+            var marsRover = new MarsRover(2,2,'W');
+            marsRover.instruction("M");
+
+            expect(marsRover.givePosition()).toEqual("1 2 W");
+        });
+
         it('should be able to move marsRover according to instruction', function () {
             var marsRover = new MarsRover(1,2,'N');
             marsRover.instruction("LMLMLMLMM");
