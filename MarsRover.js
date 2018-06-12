@@ -2,70 +2,6 @@ var MarsRover = function (xPosition, yPosition, direction) {
     this.xPosition = xPosition;
     this.yPosition = yPosition;
     this.direction = direction;
-    this.increaseX = function () {
-        this.xPosition++;
-    }
-    this.increaseY = function () {
-        this.yPosition++;
-    }
-    this.decreaseX = function () {
-        this.xPosition--;
-    }
-    this.decreaseY = function () {
-        this.yPosition--;
-    }
-    this.rotateDirectionLeft = function () {
-        switch (this.direction) {
-            case 'N':
-                this.direction = 'W';
-                break;
-            case 'W':
-                this.direction = 'S';
-                break;
-            case 'S':
-                this.direction = 'E';
-                break;
-            case 'E':
-                this.direction = 'N';
-                break;
-        }
-    }
-
-    this.rotateDirectionRight = function () {
-        switch (this.direction) {
-            case 'N':
-                this.direction = 'E';
-                break;
-            case 'W':
-                this.direction = 'N';
-                break;
-            case 'S':
-                this.direction = 'W';
-                break;
-            case 'E':
-                this.direction = 'S';
-                break;
-        }
-    }
-
-    this.move = function () {
-        switch (this.direction) {
-            case 'N':
-                this.increaseY();
-                break;
-            case 'W':
-                this.decreaseX();
-                break;
-            case 'S':
-                this.decreaseY();
-                break;
-            case 'E':
-                this.increaseX();
-                break;
-        }
-
-    }
-
 };
 
 MarsRover.prototype.givePosition = function () {
@@ -82,10 +18,75 @@ MarsRover.prototype.instruction = function (message) {
                 this.rotateDirectionRight();
                 break;
             case 'M':
-                this.move();
+                this.move()
                 break;
         }
     }
 
 };
+
+MarsRover.prototype.move = function () {
+    switch (this.direction) {
+        case 'N':
+            this.increaseY();
+            break;
+        case 'W':
+            this.decreaseX();
+            break;
+        case 'S':
+            this.decreaseY();
+            break;
+        case 'E':
+            this.increaseX();
+            break;
+    }
+}
+
+MarsRover.prototype.rotateDirectionLeft = function () {
+    switch (this.direction) {
+        case 'N':
+            this.direction = 'W';
+            break;
+        case 'W':
+            this.direction = 'S';
+            break;
+        case 'S':
+            this.direction = 'E';
+            break;
+        case 'E':
+            this.direction = 'N';
+            break;
+    }
+}
+
+MarsRover.prototype.rotateDirectionRight = function () {
+    switch (this.direction) {
+        case 'N':
+            this.direction = 'E';
+            break;
+        case 'W':
+            this.direction = 'N';
+            break;
+        case 'S':
+            this.direction = 'W';
+            break;
+        case 'E':
+            this.direction = 'S';
+            break;
+    }
+}
+
+MarsRover.prototype.increaseX = function () {
+    this.xPosition++;
+};
+
+MarsRover.prototype.increaseY = function () {
+    this.yPosition++;
+}
+MarsRover.prototype.decreaseX = function () {
+    this.xPosition--;
+}
+MarsRover.prototype.decreaseY = function () {
+    this.yPosition--;
+}
 module.exports = MarsRover;

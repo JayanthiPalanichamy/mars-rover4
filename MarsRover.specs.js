@@ -63,5 +63,4 @@ var MarsRover = require('./MarsRover');
             expect(marsRover.givePosition()).toEqual("5 1 E");
         });
 
-
     });
