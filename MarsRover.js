@@ -2,6 +2,19 @@ var MarsRover = function (xPosition,yPosition,direction) {
     this.xPosition = xPosition;
     this.yPosition = yPosition;
     this.direction = direction;
+    this.increaseX = function(){
+        this.xPosition++;
+    }
+    this.increaseY = function(){
+        this.yPosition++;
+    }
+    this.decreaseX = function(){
+        this.xPosition--;
+    }
+    this.decreaseY = function(){
+        this.yPosition--;
+    }
+
 };
 
 MarsRover.prototype.givePosition = function () {
@@ -24,6 +37,14 @@ MarsRover.prototype.instruction = function (message) {
                 case 'W': this.direction ='N'; break;
                 case 'S': this.direction ='W'; break;
                 case 'E': this.direction ='S'; break;
+            }
+        }
+        else if(command=='M'){
+            switch (this.direction){
+                case 'N': this.increaseY(); break;
+                case 'W': this.decreaseX(); break;
+                case 'S': this.decreaseY(); break;
+                case 'E': this.increaseX(); break;
             }
         }
     }
